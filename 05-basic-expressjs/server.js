@@ -1,19 +1,23 @@
 const http = require('http');
 
 const express = require('express');
+const bodyParser = require('body-parser');
 
 // express return a requestHandler
 const app = express();
+
+const adminRoutes = require('./routes/admin');
+const shopRouters = require('./routes/shop');
+
+app.use(bodyParser.urlencoded({extended: false}));
+
+app.use(adminRoutes);
+app.use(shopRouters);
 
 // use middleware, callback in .use() will run everytime the server receive any reqeust
 app.use((req, res, next) => {
   console.log('in the middleware')
   next();
-});
-
-app.use((req, res, next) => {
-  console.log('another middleware')
-  res.status(200).send('<h1>From Express</h1>');
 });
 
 app.listen(8000, () => {
