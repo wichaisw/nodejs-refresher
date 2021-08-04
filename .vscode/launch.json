@@ -11,7 +11,7 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}\\03-basic-nodejs\\app.js",
+      "program": "${workspaceFolder}\\05-basic-expressjs\\server.js",
       "restart": true,
       "runtimeExecutable": "nodemon",
       "console": "integratedTerminal"

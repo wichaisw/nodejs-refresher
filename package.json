@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./03-basic-nodejs/app.js"
+    "start": "nodemon ./05-basic-expressjs/server.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/wichaisw/nodejs-refresher/issues"
   },
-  "homepage": "https://github.com/wichaisw/nodejs-refresher#readme"
+  "homepage": "https://github.com/wichaisw/nodejs-refresher#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
