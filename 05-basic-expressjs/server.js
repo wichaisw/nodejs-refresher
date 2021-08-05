@@ -8,6 +8,8 @@ const app = express();
 const adminRoutes = require('./routes/admin');
 const shopRouters = require('./routes/shop');
 
+const errorController = require('./controllers/error');
+
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
@@ -21,9 +23,7 @@ app.use('/admin', adminRoutes);
 app.use('/shop', shopRouters);
 
 // catch all, path '/' by deafult
-app.use((req, res, next) => {
-  res.status(404).send('<h1>404 Not Found</h1>')
-});
+app.use(errorController.get404);
 
 
 app.listen(8000, () => {
