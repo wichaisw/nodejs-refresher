@@ -1,12 +1,16 @@
+const path = require('path');
+
 const Product = require('../models/product');
 
+const rootDir = require('../utils/path');
+
 const getAddProduct =  (req, res, next) => {
-  console.log('/add-product')
-  res.status(200).send('<form action="/admin/product" method="POST"><input type="text" name ="title" /><button type="submit">Send</button></form>');
+  console.log('/admin/add-product')
+  res.status(200).sendFile(path.join(rootDir, 'views', 'add-product.html'));
 }
 
 const postAddProduct = (req, res, next) => {
-  console.log('/product')
+  console.log('/admin/product')
   console.log(req.body);
   const product = new Product(req.body.title);
   product.save();
@@ -14,8 +18,8 @@ const postAddProduct = (req, res, next) => {
 }
 
 const getProducts =  (req, res, next) => {
-  console.log('/')
-  res.status(200).send('<h1>Shop Page</h1>');
+  console.log('/shop/')
+  res.status(200).sendFile(path.join(rootDir, 'views', 'shop.html'));
 }
 
 module.exports = {

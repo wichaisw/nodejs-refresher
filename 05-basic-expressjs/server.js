@@ -1,5 +1,3 @@
-const http = require('http');
-
 const express = require('express');
 
 // express return a requestHandler
@@ -15,7 +13,7 @@ app.use(express.json());
 
 // use middleware, callback in .use() will run everytime the server receive any reqeust
 app.use((req, res, next) => {
-  console.log('in the middleware')
+  console.debug('in the middleware')
   next();
 });
 
