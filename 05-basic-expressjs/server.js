@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 
 // express return a requestHandler
 const app = express();
@@ -8,12 +9,15 @@ const shopRouters = require('./routes/shop');
 
 const errorController = require('./controllers/error');
 
+
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 // use middleware, callback in .use() will run everytime the server receive any reqeust
 app.use((req, res, next) => {
-  console.debug('in the middleware')
+  // console.debug('in the middleware')
   next();
 });
 
