@@ -17,5 +17,9 @@ class Product {
 }  
 
 module.exports = {
-  Product
+  Product,
+  products
 }
+
+// exports.Product = Product;
+// exports.products = products;

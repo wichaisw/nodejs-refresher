@@ -4,32 +4,17 @@
   margin: auto;
 }
 
-.form-control {
-  margin: 1rem 0;
+.product__title {
+  font-size: 1.2rem;
+  text-align: center;
 }
 
-.form-control label,
-.form-control input {
-  display: block;
+.product__price {
+  text-align: center;
+  color: #4d4d4d;
+  margin-bottom: 0.5rem;
 }
 
-.form-control input {
-  border: 1px solid #000000;
-  font: inherit;
-  border-radius: 3px;
-}
-
-button {
-  font: inherit;
-  border: 1px solid blue;
-  color: #1d167c;
-  background-color: white;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-button:hover,
-button:active {
-  color: white;
-  background-color: #1d167c;
+.product__description {
+  text-align: center;
 }

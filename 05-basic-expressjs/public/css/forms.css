@@ -1,0 +1,15 @@
+
+.form-control {
+  margin: 1rem 0;
+}
+
+.form-control label,
+.form-control input {
+  display: block;
+}
+
+.form-control input {
+  border: 1px solid #000000;
+  font: inherit;
+  border-radius: 3px;
+}
