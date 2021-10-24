@@ -25,13 +25,13 @@ const postAddProduct = (req, res, next) => {
 // ANCHOR /shop
 const getProducts =  (req, res, next) => {
   // res.status(200).sendFile(path.join(rootDir, 'views', 'shop.html'));
-  const products = Product.fetchAll();
-  res.render('shop', {
-    prods: products,
-    pageTitle: 'Shop',
-    path: '/'
+  Product.fetchAll(products => {
+    res.render('shop', {
+      prods: products,
+      pageTitle: 'Shop',
+      path: '/'
+    });
   });
-
 }
 
 module.exports = {
