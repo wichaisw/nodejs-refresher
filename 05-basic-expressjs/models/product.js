@@ -16,10 +16,7 @@ class Product {
   }
 }  
 
-module.exports = {
-  Product,
-  products
-}
+module.exports = Product;
 
 // exports.Product = Product;
 // exports.products = products;

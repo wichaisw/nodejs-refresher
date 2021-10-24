@@ -24,7 +24,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/admin', adminRoutes);
-app.use('/shop', shopRouters);
+app.use(shopRouters);
 
 // catch all, path '/' by deafult
 app.use(errorController.get404);

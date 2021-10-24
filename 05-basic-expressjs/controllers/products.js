@@ -1,9 +1,10 @@
-const path = require('path');
+// const path = require('path');
 
-const productData = require('../models/product');
+// const rootDir = require('../utils/path');
+// const productData = require('../models/product');
+const Product = require('../models/product');
 
 
-const rootDir = require('../utils/path');
 
 // ANCHOR /admin/add-product
 const getAddProduct =  (req, res, next) => {
@@ -16,19 +17,19 @@ const getAddProduct =  (req, res, next) => {
 
 // ANCHOR /admin/product
 const postAddProduct = (req, res, next) => {
-  const product = new productData.Product(req.body.title);
+  const product = new Product(req.body.title);
   product.save();
-  res.status(303).redirect('/shop');
+  res.status(303).redirect('/');
 }
 
 // ANCHOR /shop
 const getProducts =  (req, res, next) => {
   // res.status(200).sendFile(path.join(rootDir, 'views', 'shop.html'));
-  const products = productData.products;
+  const products = Product.fetchAll();
   res.render('shop', {
     prods: products,
     pageTitle: 'Shop',
-    path: '/shop'
+    path: '/'
   });
 
 }
