@@ -18,7 +18,7 @@ main {
 .main-header {
   width: 100%;
   height: 3rem;
-  background-color: #1fb7f3;
+  background-color: #4c394e;
   padding: 0 1.5rem;
 }
 
@@ -42,13 +42,14 @@ main {
 
 .main-header__item a {
   text-decoration: none;
-  color: white;
+  color: rgba(255,255,255,0.7);
+  font-weight: 600;
 }
 
 .main-header__item a:hover,
 .main-header__item a:active,
 .main-header__item .active {
-  color: #0a1b80;
+  color: #ffffff;
 }
 
 .grid {
@@ -94,16 +95,22 @@ main {
 
 button {
   font: inherit;
-  border: 1px solid blue;
-  color: #1d167c;
-  background-color: white;
-  border-radius: 3px;
+  color: #ffffff;
+  font-weight: 600;
+  background-color: #10bbd5;
+  border: none;
+  border-radius: 5px;
+  outline: none;
   cursor: pointer;
+  padding: 0.5rem 1rem;
 }
 
-button:hover,
+button:hover {
+  background-color: #29d5ef;
+}
+
 button:active {
-  color: white;
-  background-color: #1d167c;
+  background-color: #0c91a6;
+  border-color: #0a7484;
 }
 
