@@ -15,7 +15,7 @@ const getAddProduct =  (req, res, next) => {
   });
 }
 
-// ANCHOR /admin/product
+// ANCHOR /admin/add-product
 const postAddProduct = (req, res, next) => {
   const product = new Product(req.body.title);
   product.save();
