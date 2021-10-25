@@ -9,7 +9,7 @@ const Product = require('../models/product');
 // ANCHOR /admin/add-product
 const getAddProduct =  (req, res, next) => {
   // res.status(200).sendFile(path.join(rootDir, 'views', 'add-product.html'));
-  res.status(200).render('add-product', { 
+  res.status(200).render('admin/add-product', { 
     pageTitle: 'Add Product',
     path: '/admin/add-product'
   });
@@ -22,11 +22,11 @@ const postAddProduct = (req, res, next) => {
   res.status(303).redirect('/');
 }
 
-// ANCHOR /shop
+// ANCHOR /
 const getProducts =  (req, res, next) => {
   // res.status(200).sendFile(path.join(rootDir, 'views', 'shop.html'));
   Product.fetchAll(products => {
-    res.render('shop', {
+    res.render('shop/product-list', {
       prods: products,
       pageTitle: 'Shop',
       path: '/'
