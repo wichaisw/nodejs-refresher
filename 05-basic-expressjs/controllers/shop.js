@@ -36,6 +36,14 @@ const getCart = (req, res, next) => {
   })
 }
 
+// ANCHOR GET /orders
+const getOrders = (req, res, next) => {
+  res.render('shop/orders', {
+    pageTitle: 'My Orders',
+    path: '/orders'
+  })
+}
+
 // ANCHOR GET /checkout
 const getCheckout = (req, res, next) => {
   res.render('shop/checkout', {
@@ -48,5 +56,6 @@ module.exports = {
   getProducts,
   getIndex,
   getCart,
+  getOrders,
   getCheckout
 }
