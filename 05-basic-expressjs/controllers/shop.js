@@ -17,6 +17,18 @@ const getProducts = (req, res, next) => {
   });
 }
 
+// ANCHOR GET /products/:productId
+const getProduct = (req, res, next) => {
+  const prodId = req.params.productId;
+  Product.findById(prodId, product => {
+    res.render('shop/product-detail', {
+      product,
+      pageTitle: product.title,
+      path: '/products'
+    });
+  })
+}
+
 // ANCHOR GET /
 const getIndex = (req, res, next) => {
   Product.fetchAll(products => {
@@ -57,5 +69,6 @@ module.exports = {
   getIndex,
   getCart,
   getOrders,
-  getCheckout
+  getCheckout,
+  getProduct
 }

@@ -1,3 +1,5 @@
+const { v4: uuidv4 } = require('uuid');
+
 const fs = require('fs');
 const path = require('path');
 
@@ -19,6 +21,7 @@ const getProductsFromFile = callBack => {
     }
   })
 }
+
 class Product {
   constructor(title, imageUrl, price, description) {
     this.title = title;
@@ -29,6 +32,8 @@ class Product {
 
   save() {
     // this refer to the obj created based on this class
+    this.id = uuidv4();
+
     getProductsFromFile(products => {
       products.push(this);
       fs.writeFile(productsFilePath, JSON.stringify(products), err => {
@@ -40,6 +45,13 @@ class Product {
   // make you able to call fetchAll from the class itself without new instantiation
   static fetchAll(callBack) {
     getProductsFromFile(callBack);
+  }
+
+  static findById(id, cb) {
+    getProductsFromFile(products => {
+      const product = products.find(p => p.id === id);
+      cb(product);
+    })
   }
 }  
 
