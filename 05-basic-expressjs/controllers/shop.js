@@ -3,7 +3,7 @@
 // const rootDir = require('../utils/path');
 // const productData = require('../models/product');
 const Product = require('../models/product');
-
+const Cart = require('../models/cart');
 
 // ANCHOR GET /products
 const getProducts = (req, res, next) => {
@@ -48,6 +48,14 @@ const getCart = (req, res, next) => {
   })
 }
 
+const postCart = (req, res, next) => {
+  const prodId = req.body.productId;
+  Product.findById(prodId, product => {
+    Cart.addProduct(prodId, product.price);
+  })
+  res.redirect('/cart');
+}
+
 // ANCHOR GET /orders
 const getOrders = (req, res, next) => {
   res.render('shop/orders', {
@@ -70,5 +78,6 @@ module.exports = {
   getCart,
   getOrders,
   getCheckout,
-  getProduct
+  getProduct,
+  postCart
 }
