@@ -42,10 +42,23 @@ const getIndex = (req, res, next) => {
 
 // ANCHOR GET /cart
 const getCart = (req, res, next) => {
-  res.render('shop/cart', {
-    pageTitle: 'My Cart',
-    path: '/cart'
-  })
+  Cart.getProducts(cart => {
+    Product.fetchAll(products => {
+      const cartProducts = [];
+      for(product of products) {
+        const cartProductData = cart.products.find(prod => prod.id === product.id);
+        if(cartProductData) {
+          cartProducts.push({productData: product, qty: cartProductData.qty});
+        }
+      }
+
+      res.render('shop/cart', {
+        pageTitle: 'My Cart',
+        path: '/cart',
+        products: cartProducts
+      })
+    })
+  });
 }
 
 // ANCHOR POST /cart

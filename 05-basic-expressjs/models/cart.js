@@ -21,13 +21,14 @@ class Cart {
       // find existing product
       const existingProductIndex = cart.products.findIndex(prod => prod.id === id);
       const existingProduct = cart.products[existingProductIndex];
+
       let updatedProduct;
       // add new product / increase quantity
       if(existingProduct) {
         updatedProduct = { ...existingProduct };
-        updatedProduct.qty = Number(updatedProduct.qty) + 1;
+        updatedProduct.qty += 1;
         cart.products = [...cart.products];
-        cart.products[existingProduct] = updatedProduct;
+        cart.products[existingProductIndex] = updatedProduct;
       } else {
         updatedProduct = { id, qty: 1 };
         cart.products = [...cart.products, updatedProduct]
@@ -41,7 +42,7 @@ class Cart {
   }
 
   static deleteProduct(id, productPrice) {
-    fs.readFile(p, (err, fileContent) => {
+    fs.readFile(productsFilePath, (err, fileContent) => {
       if(err) {
         return;
       }
@@ -54,6 +55,18 @@ class Cart {
       fs.writeFile(p, JSON.stringify(updatedCart), err => {
         console.log(err);
       })
+    })
+  }
+
+  static getProducts(cb) {
+    fs.readFile(productsFilePath, (err, fileContent) => {
+      const cart = JSON.parse(fileContent);
+
+      if(err) {
+        cb(null);
+      } else {
+        cb(cart);
+      }
     })
   }
 }
