@@ -48,6 +48,7 @@ const getCart = (req, res, next) => {
   })
 }
 
+// ANCHOR POST /cart
 const postCart = (req, res, next) => {
   const prodId = req.body.productId;
   Product.findById(prodId, product => {

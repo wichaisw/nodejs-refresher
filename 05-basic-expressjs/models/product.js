@@ -23,7 +23,8 @@ const getProductsFromFile = callBack => {
 }
 
 class Product {
-  constructor(title, imageUrl, price, description) {
+  constructor(id, title, imageUrl, price, description) {
+    this.id = id;
     this.title = title;
     this.imageUrl = imageUrl;
     this.price = price;
@@ -32,13 +33,22 @@ class Product {
 
   save() {
     // this refer to the obj created based on this class
-    this.id = uuidv4();
-
+    
     getProductsFromFile(products => {
-      products.push(this);
-      fs.writeFile(productsFilePath, JSON.stringify(products), err => {
-        if(err) console.debug(err);
-      } );
+      if(this.id) {
+        const existingProductIndex = products.findIndex(prod => prod.id === this.id);
+        const updatedProducts = [...products];
+        updatedProducts[existingProductIndex] = this;
+        fs.writeFile(productsFilePath, JSON.stringify(updatedProducts), err => {
+          if(err) console.debug(err);
+        });
+      } else {
+        this.id = uuidv4();
+        products.push(this);
+        fs.writeFile(productsFilePath, JSON.stringify(products), err => {
+          if(err) console.debug(err);
+        });
+      }
     });
   }
 
