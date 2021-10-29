@@ -52,7 +52,7 @@ class Cart {
       updatedCart.products = updatedCart.products.filter(prod => prod.id !== id);
       updatedCart.totalPrice = updatedCart.totalPrice - (productPrice * productQty);
       
-      fs.writeFile(p, JSON.stringify(updatedCart), err => {
+      fs.writeFile(productsFilePath, JSON.stringify(updatedCart), err => {
         console.log(err);
       })
     })

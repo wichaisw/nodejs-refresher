@@ -1,0 +1,10 @@
+.cart__item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.5rem 0;
+}
+
+.cart__item form {
+  display: inline;
+}
