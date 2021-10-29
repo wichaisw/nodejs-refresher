@@ -87,6 +87,7 @@ main {
   background-size: contain;
   display: flex;
   justify-content: center;
+  background-color: #9b9b9b;
 }
 
 .card__image img {

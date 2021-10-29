@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 const rootDir = require('../utils/path');
+const Cart = require('./cart');
 
 const productsFilePath = path.join(
   rootDir,
@@ -61,6 +62,21 @@ class Product {
     getProductsFromFile(products => {
       const product = products.find(p => p.id === id);
       cb(product);
+    })
+  }
+
+  static deleteById(id) {
+    getProductsFromFile(products => {
+      const product = products.find(prod => prod.id === id);
+      const updatedProducts = products.filter(prod => prod.id !== id);
+      fs.writeFile(productsFilePath, JSON.stringify(updatedProducts), err => {
+        if(!err) {
+          // delete product from cart too if it's no longer available
+          Cart.deleteProduct(id, product.price);
+        } else {
+          console.debug(err);
+        }
+      });
     })
   }
 }  

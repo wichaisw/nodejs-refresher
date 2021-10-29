@@ -69,6 +69,13 @@ const getProducts = (req, res, next) => {
   });
 }
 
+// ANCHOR DELETE /admin/product/:productId
+const postDeleteProduct = (req, res, next) => {
+  const prodId = req.body.productId;
+  Product.deleteById(prodId);
+  res.redirect('/admin/products')
+}
+
 
 module.exports = {
   getAddProduct,
@@ -76,4 +83,5 @@ module.exports = {
   getProducts,
   getEditProduct,
   postEditProduct,
+  postDeleteProduct
 }
